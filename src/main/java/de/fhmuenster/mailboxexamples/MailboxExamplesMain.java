@@ -14,7 +14,7 @@ public class MailboxExamplesMain {
                 "akka.actor.default-mailbox.mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n" +
                         "bounded-mailbox.mailbox-type = \"akka.dispatch.BoundedMailbox\"\n" +
                         "bounded-mailbox.mailbox-capacity = 3\n" +
-                        "priority-mailbox.mailbox-type = \"CustomPriorityMailbox\""
+                        "priority-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.CustomPriorityMailbox\""
         );
 
         ActorSystem system = ActorSystem.create("MailboxExample", config);
