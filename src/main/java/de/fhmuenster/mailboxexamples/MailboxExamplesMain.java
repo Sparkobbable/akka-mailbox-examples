@@ -14,6 +14,7 @@ public class MailboxExamplesMain {
                 "akka.actor.default-mailbox.mailbox-type = \"akka.dispatch.UnboundedMailbox\"\n" +
                         "bounded-mailbox.mailbox-type = \"akka.dispatch.BoundedMailbox\"\n" +
                         "bounded-mailbox.mailbox-capacity = 3\n" +
+                        "bounded-mailbox.mailbox-push-timeout-time = 100\n" +
                         "priority-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.CustomPriorityMailbox\""
         );
 
@@ -30,6 +31,7 @@ public class MailboxExamplesMain {
 
         // Nachrichten an die Actors senden
         defaultActor.tell("Standard Nachricht 1", ActorRef.noSender());
+
         boundedActor.tell("Bounded 1", ActorRef.noSender());
         boundedActor.tell("Bounded 2", ActorRef.noSender());
         boundedActor.tell("Bounded 3", ActorRef.noSender());
