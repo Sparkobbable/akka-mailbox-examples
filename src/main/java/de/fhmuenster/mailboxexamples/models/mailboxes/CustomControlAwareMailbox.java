@@ -11,8 +11,6 @@ import scala.Option;
 
 /**
  * Control Aware Mailbox that prioritizes control messages over regular messages.
- * This is useful for system management and control operations that should be processed
- * before regular messages.
  */
 public class CustomControlAwareMailbox implements MailboxType, ProducesMessageQueue<UnboundedControlAwareMailbox.MessageQueue> {
 

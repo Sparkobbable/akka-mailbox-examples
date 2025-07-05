@@ -29,7 +29,6 @@ public class ControlAwareMailboxExample {
         controlAwareActor.tell(new SimpleMessage("Regular message 2"), ActorRef.noSender());
         controlAwareActor.tell(new AkkaControlMessage("Control message - should be processed first"), ActorRef.noSender());
         controlAwareActor.tell(new SimpleMessage("Regular message 3"), ActorRef.noSender());
-        controlAwareActor.tell("control message as string", ActorRef.noSender());
 
         try {
             ColoredOutput.printSystemInfo("\nWaiting for messages to be processed...");

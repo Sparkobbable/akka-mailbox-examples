@@ -20,7 +20,6 @@ public class MailboxExamplesMain {
                         "priority-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.SimplePriorityMailbox\"\n" +
                         "stable-priority-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.StablePriorityMailbox\"\n" +
                         "control-aware-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.CustomControlAwareMailbox\"\n" +
-                        "custom-priority-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.CustomPriorityMailbox\"\n" +
                         "dead-letter-mailbox.mailbox-type = \"de.fhmuenster.mailboxexamples.models.mailboxes.DeadLetterMailbox\""
         );
 
@@ -43,9 +42,6 @@ public class MailboxExamplesMain {
 
         runBoundedMailboxExample(boundedActor);
         waitForProcessing(5000);
-
-        runCustomPriorityMailboxExample(customPriorityActor);
-        waitForProcessing(7000);
 
         runPriorityMailboxExample(priorityActor);
         waitForProcessing(5000);
@@ -116,16 +112,6 @@ public class MailboxExamplesMain {
         actor.tell(new SimpleMessage("Bounded message 2"), ActorRef.noSender());
         actor.tell(new SimpleMessage("Bounded message 3"), ActorRef.noSender());
         actor.tell(new SimpleMessage("Bounded message 4 (might be dropped)"), ActorRef.noSender());
-    }
-
-    private static void runCustomPriorityMailboxExample(ActorRef actor) {
-        ColoredOutput.printMessageSending("\n--- Custom Priority Actor (CustomPriorityMailbox) ---");
-        actor.tell("low", ActorRef.noSender());
-        actor.tell("high", ActorRef.noSender());
-        actor.tell("medium", ActorRef.noSender());
-        actor.tell(new PriorityMessage("Explicit priority 1", 1), ActorRef.noSender());
-        actor.tell(new PriorityMessage("Explicit priority 8", 8), ActorRef.noSender());
-        actor.tell(new SimpleMessage("urgent message"), ActorRef.noSender());
     }
 
     private static void runPriorityMailboxExample(ActorRef actor) {
