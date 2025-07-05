@@ -8,7 +8,6 @@ import de.fhmuenster.mailboxexamples.models.messages.Messages.ControlMessage;
 import de.fhmuenster.mailboxexamples.models.messages.Messages.SimpleMessage;
 import de.fhmuenster.mailboxexamples.utils.ColoredOutput;
 
-// Einfache Actor-Klasse
 public class SimpleActor extends AbstractActor {
     @Override
     public Receive createReceive() {
@@ -62,11 +61,6 @@ public class SimpleActor extends AbstractActor {
         }
     }
 
-    /**
-     * Determines the mailbox type based on the actor name.
-     * @param actorName The name of the actor
-     * @return The mailbox type as a string
-     */
     private String getMailboxTypeFromActorName(String actorName) {
         switch (actorName) {
             case "defaultActor":
